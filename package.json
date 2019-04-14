@@ -1,0 +1,31 @@
+{
+  "name": "ts-structures",
+  "version": "1.0.0",
+  "description": "Simple js structures with Typescript",
+  "main": "./src/intex.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/73nko/ts-structures.git"
+  },
+  "keywords": [
+    "typescript",
+    "data-structures"
+  ],
+  "author": "73nko <apramos89@gmail.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/73nko/ts-structures/issues"
+  },
+  "homepage": "https://github.com/73nko/ts-structures#readme",
+  "dependencies": {
+    "tslint": "^5.15.0"
+  },
+  "devDependencies": {
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0"
+  }
+}

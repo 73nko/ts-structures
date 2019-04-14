@@ -1,2 +1,3 @@
-# ts-structures
-Working with basic structures in TS
+# TS-structures
+
+I'm goint to play with different Javascript Structutres in Typescript.
