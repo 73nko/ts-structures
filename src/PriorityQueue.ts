@@ -1,37 +1,49 @@
 import IQueue from "./interfaces/IQueue";
+import Queue from "./Queue";
 
-class PriorityQueue {}
+class PriorityQueue<ElemType> implements IQueue<ElemType> {
+  private highPriorityQueue: Queue<ElemType>;
+  private lowPriorityQueue: Queue<ElemType>;
+
+  constructor(lowQueue?: ElemType[], highQueue?: ElemType[]) {
+    this.highPriorityQueue = new Queue(highQueue || []);
+    this.lowPriorityQueue = new Queue(lowQueue || []);
+  }
+
+  public clear(): void {
+    this.highPriorityQueue = new Queue([]);
+    this.lowPriorityQueue = new Queue([]);
+  }
+
+  public enqueue(elem: ElemType, isHighPriority: Boolean): void {
+    const queue = isHighPriority
+      ? this.highPriorityQueue
+      : this.lowPriorityQueue;
+    queue.enqueue(elem);
+  }
+
+  public dequeue(): ElemType | undefined {
+    if (!this.highPriorityQueue.isEmpty) {
+      return this.highPriorityQueue.dequeue();
+    }
+
+    return this.lowPriorityQueue.dequeue();
+  }
+
+  public peek(): ElemType | undefined {
+    if (!this.highPriorityQueue.isEmpty) {
+      return this.highPriorityQueue.peek();
+    }
+
+    return this.lowPriorityQueue.peek();
+  }
+
+  get length(): number {
+    return this.highPriorityQueue.length + this.lowPriorityQueue.length;
+  }
+  get isEmpty(): boolean {
+    return this.highPriorityQueue.isEmpty && this.lowPriorityQueue.isEmpty;
+  }
+}
 
 export default PriorityQueue;
-
-// function createPriorityQueue() {
-//   const highPriorityQueue = createQueue();
-//   const lowPriorityQueue = createQueue();
-
-//   return {
-//     enqueue(item, isHighPriority = false) {
-//       const queue = isHighPriority ? highPriorityQueue : lowPriorityQueue;
-//       queue.enqueue(item);
-//     },
-//     dequeue() {
-//       if (!highPriorityQueue.isEmpty()) {
-//         return highPriorityQueue.dequeue();
-//       }
-
-//       return lowPriorityQueue.dequeue();
-//     },
-//     peek() {
-//       if (!highPriorityQueue.isEmpty()) {
-//         return highPriorityQueue.peek();
-//       }
-
-//       return lowPriorityQueue.peek();
-//     },
-//     get length() {
-//       return highPriorityQueue.length + lowPriorityQueue.length;
-//     },
-//     isEmpty() {
-//       return highPriorityQueue.isEmpty() && lowPriorityQueue.isEmpty();
-//     }
-//   };
-// }

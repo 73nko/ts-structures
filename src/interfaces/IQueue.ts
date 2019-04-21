@@ -1,8 +1,8 @@
-interface IQueue<T> {
+interface IQueue<ELemType> {
   clear(): void;
-  enqueue(elem: T): void;
-  dequeue(): undefined | T;
-  peek(): undefined | T;
+  enqueue(elem: ELemType, isHighPriority?: Boolean): void;
+  dequeue(): undefined | ELemType;
+  peek(): undefined | ELemType;
   readonly length: number;
   readonly isEmpty: boolean;
 }

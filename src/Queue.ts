@@ -1,23 +1,23 @@
 import IQueue from "./interfaces/IQueue";
-class Queue<T> implements IQueue<T> {
-  private queue: T[];
+class Queue<ElemType> implements IQueue<ElemType> {
+  private queue: ElemType[];
 
-  constructor(q?: T[]) {
+  constructor(q?: ElemType[]) {
     this.queue = q || [];
   }
   public clear(): void {
     this.queue = [];
   }
-  public enqueue(elem: T): void {
+  public enqueue(elem: ElemType): void {
     this.queue.unshift(elem);
   }
-  public dequeue(): undefined | T {
+  public dequeue(): undefined | ElemType {
     if (this.isEmpty) {
       return undefined;
     }
     return this.queue.pop();
   }
-  public peek(): undefined | T {
+  public peek(): undefined | ElemType {
     if (this.isEmpty) {
       return undefined;
     }
