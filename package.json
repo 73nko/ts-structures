@@ -5,6 +5,7 @@
   "main": "./src/intex.ts",
   "scripts": {
     "build": "tsc",
+    "clean": "npx rimraf dist",
     "test": "jest"
   },
   "repository": {
